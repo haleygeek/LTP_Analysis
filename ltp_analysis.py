@@ -1,6 +1,6 @@
 __author__ = 'haleygeek'
 
-#LTP_Analysis.py
+# ltp_analysis.py
 # Last Updated 5-24-15
 
 # Runs on Python 2
