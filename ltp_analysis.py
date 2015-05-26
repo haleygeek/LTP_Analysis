@@ -1,6 +1,8 @@
+__author__ = 'haleyutsw'
+__author__ = 'haleyutsw'
 __author__ = 'haleygeek'
 
-# ltp_analysis.py
+#LTP_Analysis.py
 # Last Updated 5-24-15
 
 # Runs on Python 2
@@ -44,11 +46,11 @@ while file_check == False:
     filepath = str (user_path)
     print "\n", "\t", "You entered", "'",filepath,"'","\n"
 
-    if filepath == "stop":
+    if filepath == "stop" or filepath == "Stop" or filepath == "STOP":
         print "\t", "Program Stopped."
-        quit()
+        sys.exit()
 
-    elif filepath == "help":
+    elif filepath == "help" or filepath == "Help" or filepath == "HELP":
 
         # Help routine if the user is running windows
         if _platform == "win32":
@@ -58,7 +60,7 @@ while file_check == False:
             print "4) Highlight and copy the location (i.e. C:\user\haley\dropbox\Shank3\Ephys.xlslx)"
             print "5) Paste it at the prompt"
             print "\n"
-            filepath = "Enter the file path for the excel file. Type 'quit' to end the program"
+            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
 
         # Help routine if the user is running MacOS
         elif _platform == "darwin":
@@ -68,7 +70,7 @@ while file_check == False:
             print "4) Highlight and copy the path labeled 'Where' (i.e. /Dropbox/Shank3/Ephys.xlslx)"
             print "5) Paste it at the prompt"
             print "\n"
-            filepath = "Enter the file path for the excel file. Type 'quit' to end the program"
+            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
 
     # Validates that the filepath they entered leads to a valid filename. If not, it prompts them again.
     else:
@@ -92,7 +94,7 @@ print "\t", "You entered", sheet
 
 if sheet == "stop" or sheet == "Stop" or sheet == "STOP":
     print "\t", "Program Stopped."
-    quit()
+    sys.exit()
 else:
     ws = wb [sheet]
     print "\t", "Sheet opened successfully.", "\n"
@@ -129,7 +131,7 @@ for col in range (1, max_col):
         # When the end of the baseline rows is reached, The average is calculated
         else:
             print "There are empty cells in your data! Fix it and restart."
-            quit ()
+            sys.exit ()
 
     # Take Average from baseline and apply it to every cell in the column
     avg = baseline_sum/29
@@ -167,4 +169,4 @@ wb.save(filepath)
 print "Your normalized data has been added to the workbook as 'Norm", sheet,"'"
 
 
-quit ()
+sys.exit ()
