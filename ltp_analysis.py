@@ -1,5 +1,3 @@
-__author__ = 'haleyutsw'
-__author__ = 'haleyutsw'
 __author__ = 'haleygeek'
 
 #LTP_Analysis.py
