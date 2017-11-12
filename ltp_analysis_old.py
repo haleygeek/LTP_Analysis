@@ -1,19 +1,8 @@
-__author__ = 'haleygeek'
-
+__author__ = 'Haley E. Speed, Ph.D.'
+__copyright__ = "Copyright 2012"
 #LTP_Analysis.py
+
 # Last Updated 5-24-15
-
-# Runs on Python 2
-# Requires openpyxl.py for handling xlsx spreadsheets
-
-# This program takes an excel spreadsheet of LTP raw data and calculates the average baseline response and normalizes
-# all raw data to the average baseline.
-
-# This program assumes that 1 column contains a title in row 1 (i.e. "date_000.abf" ) and that the baseline contains 60
-# data points (i.e. rows 1-61 contain slopes from the last 20 minutes of baseline).
-
-# Load openpyxls.py which handles interface with xlsx files
-# Load sys which handles interactions with the operating system (exit, platform, etc.)
 
 import openpyxl
 import sys
@@ -22,53 +11,18 @@ from sys import platform as _platform
 import os.path
 
 
-
-# This specifies the location of your spreadsheet.
-
-
-print  "Welcome to the LTP_Analyzer by Haley Speed."
-print  "This program makes several assumptions based on my Ephys excel template."
-print "1) Row 1 contains the title of your experiment (i.e. '15_05_01_001.abf Ch1')"
-print "2) Rows 2-31 contain baseline raw slopes (20 minute baseline as copied from clampfit results)"
-print "3) That you know the filepath to your file."
-
-
-
 # Routine to get the filename and path from the user
-
 file_check = False
 
 while file_check == False:
 
-    user_path = raw_input("Enter the file path for the excel file. Type 'help' to find the filepath. Type 'stop' to end the program")
+    user_path = raw_input("Enter the file path for the excel file. Type 'stop' to end the program")
     filepath = str (user_path)
     print "\n", "\t", "You entered", "'",filepath,"'","\n"
 
     if filepath == "stop" or filepath == "Stop" or filepath == "STOP":
         print "\t", "Program Stopped."
         sys.exit()
-
-    elif filepath == "help" or filepath == "Help" or filepath == "HELP":
-
-        # Help routine if the user is running windows
-        if _platform == "win32":
-            print "1) Find the xlsx file in Windows explorer."
-            print "2) Right click on the file."
-            print "3) Choose 'properties'"
-            print "4) Highlight and copy the location (i.e. C:\user\haley\dropbox\Shank3\Ephys.xlslx)"
-            print "5) Paste it at the prompt"
-            print "\n"
-            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
-
-        # Help routine if the user is running MacOS
-        elif _platform == "darwin":
-            print "1) Find the xlsx file in Finder."
-            print "2) Ctrl Click on the file."
-            print "3) Choose 'Get info'"
-            print "4) Highlight and copy the path labeled 'Where' (i.e. /Dropbox/Shank3/Ephys.xlslx)"
-            print "5) Paste it at the prompt"
-            print "\n"
-            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
 
     # Validates that the filepath they entered leads to a valid filename. If not, it prompts them again.
     else:
